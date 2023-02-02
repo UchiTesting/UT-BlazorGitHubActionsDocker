@@ -31,7 +31,7 @@ jobs:
           # To define a custom registry
           # registry: docker.pkg.github.com
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile-arm64
           platforms: linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-arm64
