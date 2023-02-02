@@ -1,0 +1,19 @@
+name: Docker Image CI for ARM64
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+  # Allow manual run of the pipeline
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile-arm64 --tag uchitesting/blazor-github-actions:$(date +%s)-arm64
