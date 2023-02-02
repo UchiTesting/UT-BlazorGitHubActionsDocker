@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/rasp-test/latest-arm64
+          tags: uchitesting/rasp-test/latest-arm64
