@@ -30,5 +30,6 @@ jobs:
           # registry: docker.pkg.github.com
           context: .
           file: ./Dockerfile
+          platforms: linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-arm64
