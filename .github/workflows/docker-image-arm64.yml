@@ -17,3 +17,12 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile-arm64 --tag uchitesting/blazor-github-actions:$(date +%s)-arm64
+      - name: Push image to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          # To define a custom registry
+          # registry: docker.pkg.github.com
+          repository: uchitesting/rasp-test
+          tags: latest-arm64, ${{github.run_number}}
