@@ -6,12 +6,12 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["rasp-test.csproj", "."]
-RUN dotnet restore "rasp-test.csproj"
+RUN dotnet restore "rasp-test.csproj" -r linux-arm64
 COPY . .
-RUN dotnet build "rasp-test.csproj" -c Release -o /app/build
+RUN dotnet build "rasp-test.csproj" -c Release -r linux-arm64 --no-self-contained -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "rasp-test.csproj" -r linux-arm64 -c Release -o /app/publish
+RUN dotnet publish "rasp-test.csproj" -r linux-arm64 -c Release --no-self-contained -o /app/publish
 
 FROM base AS final
 WORKDIR /app
