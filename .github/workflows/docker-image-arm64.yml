@@ -1,10 +1,10 @@
 name: Docker Image CI for ARM64
 
 on:
-  push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+  #push:
+  #  branches: ["master"]
+  #pull_request:
+  #  branches: ["master"]
 
   # Allow manual run of the pipeline
   workflow_dispatch:
