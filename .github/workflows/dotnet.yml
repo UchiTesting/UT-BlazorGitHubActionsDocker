@@ -41,7 +41,7 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
 
-  something:
+  containerize:
     needs: test
     runs-on: ubuntu-latest
 
@@ -51,5 +51,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.x.x
-      - name: Trying something
-        run: ls -l
+      - name: Add Containerizing NuGet package
+        run: dotnet add package Microsoft.NET.Build.Containers --version 0.3.2
+      - name: Containerize with .NET 7.0
+        run: dotnet publish --os linux --arch arm64 -p:PublishProfile=DefaultContainer
+      - name: Remove Containerizing NuGet package
+        run: dotnet remove package Microsoft.NET.Build.Containers
