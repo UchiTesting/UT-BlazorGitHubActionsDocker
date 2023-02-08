@@ -33,8 +33,9 @@ jobs:
 
   something:
 
+    needs: build
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Trying something
       run: ls -l
