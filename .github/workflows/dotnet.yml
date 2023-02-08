@@ -63,4 +63,4 @@ jobs:
       - name: Remove Containerizing NuGet package
         run: dotnet remove package Microsoft.NET.Build.Containers
       - name: Push to Docker registry
-        run: docker push uchitesting/rasp-test:latest-arm64
+        run: docker push docker.io/uchitesting/rasp-test:latest-arm64
