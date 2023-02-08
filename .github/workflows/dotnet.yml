@@ -8,46 +8,42 @@ on:
   #  branches: [ "master" ]
   #pull_request:
   #  branches: [ "master" ]
-    
+
   # Allow manual run of the pipeline
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        # According to https://github.com/actions/runner-images/issues/6539#issuecomment-1314127790
-        dotnet-version: 7.x.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          # According to https://github.com/actions/runner-images/issues/6539#issuecomment-1314127790
+          dotnet-version: 7.x.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore && pwd && ls -l
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
-      with:
-        name: .net-app
-        path: ${{env.DOTNET_ROOT}}/rasp-test
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/rasp-test
 
   something:
-
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: .net-app
-    - name: Trying something
-      run: ls -l
-
-
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: .net-app
+      - name: Trying something
+        run: ls -l
