@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>rasp_test</RootNamespace>
+    <ContainerImageTag>latest-arm64</ContainerImageTag>
   </PropertyGroup>
 
 </Project>
