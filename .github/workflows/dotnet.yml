@@ -71,15 +71,15 @@ jobs:
         run: dotnet publish --os linux --arch arm64 -p:PublishProfile=DefaultContainer
       - name: Remove Containerizing NuGet package
         run: dotnet remove package Microsoft.NET.Build.Containers
-      # - name: Push to Docker registry
-      #   run: docker push docker.io/uchitesting/rasp-test:latest-arm64
-      - name: Build and Push the image to Docker Hub
-        uses: docker/build-push-action@v4
-        with:
-          # To define a custom registry
-          # registry: docker.pkg.github.com
-          context: .
-          # file: ./Dockerfile
-          platforms: linux/arm64
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-arm64
+      - name: Push to Docker registry
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-arm64
+      # - name: Build and Push the image to Docker Hub
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     # To define a custom registry
+      #     # registry: docker.pkg.github.com
+      #     context: .
+      #     # file: ./Dockerfile
+      #     platforms: linux/arm64
+      #     push: true
+      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-arm64
