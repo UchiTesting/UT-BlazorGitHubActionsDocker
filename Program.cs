@@ -19,6 +19,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Just for the sake of triggering GitHub Action pipelines
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
