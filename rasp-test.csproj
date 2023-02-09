@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>rasp_test</RootNamespace>
+    <ContainerImageName>uchitesting/rasp-test</ContainerImageName>
     <ContainerImageTag>latest-arm64</ContainerImageTag>
   </PropertyGroup>
 
