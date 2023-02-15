@@ -5,9 +5,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["rasp-test.csproj", "."]
+COPY ["rasp-test/rasp-test.csproj", "."]
 RUN dotnet restore "rasp-test.csproj"
-COPY . .
+COPY rasp-test/ .
 RUN dotnet build "rasp-test.csproj" -c Release -o /app/build
 
 FROM build AS publish
