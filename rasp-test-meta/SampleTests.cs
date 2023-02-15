@@ -20,11 +20,5 @@ namespace rasp_test_meta
             Assert.AreEqual(63, OperationsService.AddPairAsync(e, f).Result);
             Assert.AreEqual(1137, OperationsService.AddPairAsync(g, h).Result);
         }
-
-        [TestMethod]
-        public void GivenIWantToTestPipelineThenFailOnPurpose()
-        {
-            Assert.Fail();
-        }
     }
 }
