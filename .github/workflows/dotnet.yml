@@ -43,7 +43,8 @@ jobs:
         with:
           dotnet-version: 7.x.x
       - name: Test
-        run: dotnet test $UT_TEST_PROJECT_LOCATION --no-build --verbosity normal
+        # run: dotnet test $UT_TEST_PROJECT_LOCATION --no-build --verbosity normal
+        run: dotnet test $UT_TEST_PROJECT_LOCATION --logger "console;verbosity=detailed"
 
   containerize:
     needs: test
