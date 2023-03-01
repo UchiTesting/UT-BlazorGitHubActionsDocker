@@ -33,4 +33,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest, ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-{{GITHUB_REF}}-$(date +%y%m%d)
