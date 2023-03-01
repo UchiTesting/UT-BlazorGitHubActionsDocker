@@ -1,4 +1,4 @@
-name: Docker Image CI for AMD64
+name: Docker Test Image CI for AMD64
 
 on:
   # Allow manual run of the pipeline
