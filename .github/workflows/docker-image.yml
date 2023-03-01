@@ -9,9 +9,18 @@ on:
   # Allow manual run of the pipeline
   workflow_dispatch:
 
+env:
+  CURRENT_DATE: $(date +%y%m%d)
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      CURRENT_DATE
+
+
 
     steps:
       - name: Build the Docker image
@@ -33,4 +42,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest,${{secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-{{github.ref_name}}-$(date +%y%m%d)
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-test:latest,${{secrets.DOCKERHUB_USERNAME }}/rasp-test:latest-{{github.ref_name}}-$CURRENT_DATE
